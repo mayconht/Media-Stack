@@ -3,9 +3,9 @@
 # This script will extract all of the API Keys configured in the *ARR Media Library Managers
 # You need to install 'yq' and 'xmllint' packages to parse configuration files
 
-export FOLDER_FOR_YAMLS=/docker                 # <-- Folder where the yaml and .env files are located
-export FOLDER_FOR_MEDIA=/docker/media           # <-- Folder where your media is locate
-export FOLDER_FOR_DATA=/docker/appdata          # <-- Folder where MediaStack stores persistent data and configurations
+export FOLDER_FOR_YAMLS=./              # <-- Folder where the yaml and .env files are located
+export FOLDER_FOR_MEDIA=/mnt/media           # <-- Folder where your media is locate
+export FOLDER_FOR_DATA=/mnt/config          # <-- Folder where MediaStack stores persistent data and configurations
 
 export PUID=1000
 export PGID=1000
