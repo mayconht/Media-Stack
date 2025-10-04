@@ -69,6 +69,7 @@ fi
 echo 
 echo Pulling new / updated Docker images...
 echo 
+sudo docker login
 sudo docker compose pull
 
 echo 
