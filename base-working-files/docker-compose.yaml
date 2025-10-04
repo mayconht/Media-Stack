@@ -56,61 +56,61 @@ services:
 ##  Documentation: https://hub.docker.com/r/guacamole/guacamole
 ##
 ###########################################################################
-###########################################################################
-  guacamole:
-    image: guacamole/guacamole
-    container_name: guacamole
-    restart: unless-stopped
-    user: ${PUID:?err}:${PGID:?err}
-    depends_on:
-      postgresql:
-        condition: service_healthy
-        restart: true
-    networks:
-      - mediastack
-    ports:
-      - ${WEBUI_PORT_GUACAMOLE:?err}:8080
-    environment:
-      - TZ=${TIMEZONE:?err}
-      - WEBAPP_CONTEXT=ROOT
-      - GUACD_HOSTNAME=guacd
-      - POSTGRESQL_HOSTNAME=postgresql
-      - POSTGRESQL_PORT=${POSTGRESQL_PORT:?err}
-      - POSTGRESQL_DATABASE=${GUACAMOLE_DATABASE:?err}
-      - POSTGRESQL_USER=${POSTGRESQL_USERNAME:?err}
-      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD:?err}
-    labels:
-      - traefik.enable=true
-    # ROUTERS
-      - traefik.http.routers.guacamole.service=guacamole
-      - traefik.http.routers.guacamole.rule=Host(`guacamole.${CLOUDFLARE_DNS_ZONE:?err}`)
-      - traefik.http.routers.guacamole.entrypoints=secureweb
-      - traefik.http.routers.guacamole.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
-    # SERVICES
-      - traefik.http.services.guacamole.loadbalancer.server.scheme=http
-      - traefik.http.services.guacamole.loadbalancer.server.port=8080
-    # MIDDLEWARES
+# ###########################################################################
+#   guacamole:
+#     image: guacamole/guacamole
+#     container_name: guacamole
+#     restart: unless-stopped
+#     user: ${PUID:?err}:${PGID:?err}
+#     depends_on:
+#       postgresql:
+#         condition: service_healthy
+#         restart: true
+#     networks:
+#       - mediastack
+#     ports:
+#       - ${WEBUI_PORT_GUACAMOLE:?err}:8080
+#     environment:
+#       - TZ=${TIMEZONE:?err}
+#       - WEBAPP_CONTEXT=ROOT
+#       - GUACD_HOSTNAME=guacd
+#       - POSTGRESQL_HOSTNAME=postgresql
+#       - POSTGRESQL_PORT=${POSTGRESQL_PORT:?err}
+#       - POSTGRESQL_DATABASE=${GUACAMOLE_DATABASE:?err}
+#       - POSTGRESQL_USER=${POSTGRESQL_USERNAME:?err}
+#       - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD:?err}
+#     labels:
+#       - traefik.enable=true
+#     # ROUTERS
+#       - traefik.http.routers.guacamole.service=guacamole
+#       - traefik.http.routers.guacamole.rule=Host(`guacamole.${CLOUDFLARE_DNS_ZONE:?err}`)
+#       - traefik.http.routers.guacamole.entrypoints=secureweb
+#       - traefik.http.routers.guacamole.middlewares=authentik-forwardauth@file,security-headers@file,traefik-bouncer@file
+#     # SERVICES
+#       - traefik.http.services.guacamole.loadbalancer.server.scheme=http
+#       - traefik.http.services.guacamole.loadbalancer.server.port=8080
+#     # MIDDLEWARES
 
-  guacd:
-    image: guacamole/guacd
-    container_name: guacd
-    restart: unless-stopped
-    user: ${PUID:?err}:${PGID:?err}
-    depends_on:
-      postgresql:
-        condition: service_healthy
-        restart: true
-    networks:
-      - mediastack
-    ports:
-      - ${GUACD_PORT:?err}:4822
-    environment:
-      - TZ=${TIMEZONE:?err}
-      - POSTGRESQL_HOSTNAME=postgresql
-      - POSTGRESQL_PORT=${POSTGRESQL_PORT:?err}
-      - POSTGRESQL_DATABASE=${GUACAMOLE_DATABASE:?err}
-      - POSTGRESQL_USER=${POSTGRESQL_USERNAME:?err}
-      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD:?err}
+#   guacd:
+#     image: guacamole/guacd
+#     container_name: guacd
+#     restart: unless-stopped
+#     user: ${PUID:?err}:${PGID:?err}
+#     depends_on:
+#       postgresql:
+#         condition: service_healthy
+#         restart: true
+#     networks:
+#       - mediastack
+#     ports:
+#       - ${GUACD_PORT:?err}:4822
+#     environment:
+#       - TZ=${TIMEZONE:?err}
+#       - POSTGRESQL_HOSTNAME=postgresql
+#       - POSTGRESQL_PORT=${POSTGRESQL_PORT:?err}
+#       - POSTGRESQL_DATABASE=${GUACAMOLE_DATABASE:?err}
+#       - POSTGRESQL_USER=${POSTGRESQL_USERNAME:?err}
+#       - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD:?err}
 
 ###########################################################################
 ###########################################################################
@@ -1214,7 +1214,7 @@ services:
 ###########################################################################
 ###########################################################################
   readarr:
-    image: lscr.io/linuxserver/readarr:develop
+    image: lscr.io/linuxserver/readarr
     container_name: readarr
     restart: unless-stopped
     volumes:
@@ -1548,7 +1548,7 @@ services:
 ###########################################################################
 ###########################################################################
   whisparr:
-    image: hotio/whisparr:nightly
+    image: hotio/whisparr
     container_name: whisparr
     restart: unless-stopped
     volumes:
