@@ -30,7 +30,7 @@ services:
     restart: unless-stopped
     networks:
       - mediastack
-    user: ${PUID:?err}:${PGID:?err}
+    # user: ${PUID:?err}:${PGID:?err}
     ports:
       - ${POSTGRESQL_PORT:?err}:5432
     healthcheck:
