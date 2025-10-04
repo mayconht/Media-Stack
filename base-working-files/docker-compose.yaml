@@ -1548,7 +1548,7 @@ services:
 ###########################################################################
 ###########################################################################
   whisparr:
-    image: hotio/whisparr
+    image: ghcr.io/hotio/whisparr
     container_name: whisparr
     restart: unless-stopped
     volumes:
