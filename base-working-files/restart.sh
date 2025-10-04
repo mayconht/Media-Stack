@@ -24,6 +24,7 @@ echo "   - FOLDER_FOR_MEDIA=$FOLDER_FOR_MEDIA"
 echo "   - FOLDER_FOR_DATA=$FOLDER_FOR_DATA"
 echo "   - PUID=$PUID"
 echo "   - PGID=$PGID"
+echo "   - postgresql user=$(grep -E '^POSTGRESQL_USERNAME=' "$ENV_FILE" | cut -d '=' -f2- | xargs | tr -d '\r')"
 
 # Validate required vars
 MISSING_VARS=()
