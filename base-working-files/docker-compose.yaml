@@ -819,7 +819,7 @@ services:
     environment:
       - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
-      - HOMEPAGE_ALLOWED_HOSTS=homepage,homepage.${CLOUDFLARE_DNS_ZONE:?err},${CLOUDFLARE_DNS_ZONE:?err},localhost,${LOCAL_DOCKER_IP:?err}
+      - HOMEPAGE_ALLOWED_HOSTS=homepage,homepage.${CLOUDFLARE_DNS_ZONE:?err},${CLOUDFLARE_DNS_ZONE:?err},localhost,${LOCAL_DOCKER_IP:?err},192.168.1.250:3000
     networks:
       - mediastack
     labels:
