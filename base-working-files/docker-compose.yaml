@@ -1171,7 +1171,7 @@ services:
     container_name: qbittorrent
     restart: unless-stopped
     volumes:
-      - ${FOLDER_FOR_MEDIA:?err}/qbittorrent/downloads:/downloads
+      - ${FOLDER_FOR_MEDIA:?err}:/data
       - ${FOLDER_FOR_DATA:?err}/qbittorrent:/config
     environment:
       - PUID=${PUID:?err}
