@@ -25,7 +25,7 @@ services:
 ###########################################################################
 ###########################################################################
   postgresql:
-    image: docker.io/library/postgres:latest
+    image: docker.io/library/postgres:17-alpine
     container_name: postgresql
     restart: unless-stopped
     networks:
@@ -43,6 +43,7 @@ services:
       - ${FOLDER_FOR_DATA:?err}/postgresql:/var/lib/postgresql/data
     environment:
       - TZ=${TIMEZONE:?err}
+      - PGData=${FOLDER_FOR_DATA:?err}/postgresql/data
       - POSTGRES_DB=${AUTHENTIK_DATABASE:?err}
       - POSTGRES_USER=${POSTGRESQL_USERNAME:?err}
       - POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD:?err}
