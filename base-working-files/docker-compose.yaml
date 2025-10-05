@@ -1180,11 +1180,13 @@ services:
       - TZ=${TIMEZONE:?err}
       - WEBUI_PORT=${WEBUI_PORT_QBITTORRENT:?err}
       - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:qbittorrent
+      - TORRENTING_PORT=6887
       - TP_THEME=${TP_THEME:?err}
     networks:
       - mediastack
     ports:
       - ${WEBUI_PORT_QBITTORRENT:?err}:${WEBUI_PORT_QBITTORRENT:?err}
+      - 6887:6887
     labels:
       - traefik.enable=true
     # ROUTERS
