@@ -1637,23 +1637,28 @@ services:
     container_name: vert
     image: ghcr.io/vert-sh/vert:latest
     build:
-      context: .
+      context: ./vert.dockerfile
       args:
         PUB_HOSTNAME: ${PUB_HOSTNAME:-localhost:5173}
         PUB_PLAUSIBLE_URL: ${PUB_PLAUSIBLE_URL:-}
         PUB_ENV: ${PUB_ENV:-production}
         PUB_DISABLE_ALL_EXTERNAL_REQUESTS: ${DISABLE_ALL_EXTERNAL_REQUESTS:-false}
-        PUB_VERTD_URL: ${PUB_VERTD_URL:-}
+        PUB_VERTD_URL: ${PUB_VERTD_URL:-localhost:24153}
         PUB_DONATION_URL: ${PUB_DONATION_URL:-https://donations.vert.sh}
         PUB_STRIPE_KEY: ${PUB_STRIPE_KEY:-pk_live_51RDVmAGSxPVad6bQwzVNnbc28nlmzA30krLWk1fefCMpUPiSRPkavMMbGqa8A3lUaOCMlsUEVy2CWDYg0ip3aPpL00ZJlsMkf2}
     restart: unless-stopped
+    networks:
+      - mediastack
     ports:
       - ${WEBUI_PORT_VERT:-24152}:80
 
   vertd:
     container_name: vertd
     image: ghcr.io/vert-sh/vertd:latest
-    build: .
+    build: ./vertd.dockerfile
+    restart: unless-stopped
+    networks:
+      - mediastack
     environment:
       - WEBHOOK_URL=${WEBHOOK_URL}
       - WEBHOOK_PINGS=${WEBHOOK_PINGS}
