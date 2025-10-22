@@ -1637,7 +1637,7 @@ services:
     container_name: vert
     image: ghcr.io/vert-sh/vert:latest
     build:
-      context: ./vert.dockerfile
+      context: ./vert/
       args:
         PUB_HOSTNAME: ${PUB_HOSTNAME:-localhost:5173}
         PUB_PLAUSIBLE_URL: ${PUB_PLAUSIBLE_URL:-}
@@ -1655,7 +1655,7 @@ services:
   vertd:
     container_name: vertd
     image: ghcr.io/vert-sh/vertd:latest
-    build: ./vertd.dockerfile
+    build: ./vertd/
     restart: unless-stopped
     networks:
       - mediastack
