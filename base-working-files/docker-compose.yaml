@@ -1694,7 +1694,7 @@ services:
       - /run/dbus:/run/dbus:ro
     depends_on:
       - mosquitto
-      - zigbee2mqtt
+      # - zigbee2mqtt
     environment:
       - TZ=Europe/London
     network_mode: host                # for RPi
