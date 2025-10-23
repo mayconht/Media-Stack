@@ -1,0 +1,244 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"navbar": {
+		"upload": "Carica",
+		"convert": "Converti",
+		"settings": "Impostazioni",
+		"about": "Informazioni",
+		"toggle_theme": "Cambia tema"
+	},
+	"footer": {
+		"copyright": "© {year} VERT.",
+		"source_code": "Codice sorgente",
+		"discord_server": "Server Discord"
+	},
+	"upload": {
+		"title": "Il convertitore di file che amerai.",
+		"subtitle": "Tutta l'elaborazione di immagini, audio e documenti avviene sul tuo dispositivo. I video sono convertiti sui nostri server velocissimi. Nessun limite di dimensione, nessuna pubblicità e completamente open source.",
+		"uploader": {
+			"text": "Trascina o clicca per {action}",
+			"convert": "convertire"
+		},
+		"cards": {
+			"title": "VERT supporta...",
+			"images": "Immagini",
+			"audio": "Audio",
+			"documents": "Documenti",
+			"video": "Video",
+			"video_server_processing": "Supportato da server",
+			"local_supported": "Supportato in locale",
+			"status": {
+				"text": "<b>Stato:</b> {status}",
+				"ready": "pronto",
+				"not_ready": "non pronto",
+				"not_initialized": "non inizializzato",
+				"downloading": "download in corso...",
+				"initializing": "inizializzazione in corso...",
+				"unknown": "stato sconosciuto"
+			},
+			"supported_formats": "Formati supportati:"
+		},
+		"tooltip": {
+			"partial_support": "Questo formato può essere convertito solo come {direction}.",
+			"direction_input": "input (da)",
+			"direction_output": "output (a)",
+			"video_server_processing": "Per impostazione predefinita, i video vengono caricati su un server per l'elaborazione. Scopri come configurarlo in locale qui."
+		}
+	},
+	"convert": {
+		"external_warning": {
+			"title": "Avviso server esterno",
+			"text": "Se scegli di convertire in un formato video, quei file verranno caricati su un server esterno per essere convertiti. Vuoi continuare?",
+			"yes": "Sì",
+			"no": "No"
+		},
+		"panel": {
+			"convert_all": "Converti tutti",
+			"download_all": "Scarica tutti come .zip",
+			"remove_all": "Rimuovi tutti i file",
+			"set_all_to": "Imposta tutti a",
+			"na": "N/D"
+		},
+		"dropdown": {
+			"audio": "Audio",
+			"video": "Video",
+			"doc": "Documento",
+			"image": "Immagine",
+			"placeholder": "Cerca formato"
+		},
+		"tooltips": {
+			"unknown_file": "Tipo di file sconosciuto",
+			"audio_file": "File audio",
+			"video_file": "File video",
+			"document_file": "File documento",
+			"image_file": "File immagine",
+			"convert_file": "Converti questo file",
+			"download_file": "Scarica questo file"
+		},
+		"errors": {
+			"cant_convert": "Non possiamo convertire questo file.",
+			"vertd_server": "cosa stai facendo...? dovresti eseguire il server vertd!",
+			"vertd_generic_body": "Si è verificato un errore durante il tentativo di conversione del tuo video. Vuoi inviare questo video agli sviluppatori per aiutare a risolvere questo bug? Verrà inviato solo il tuo file video. Nessun identificatore sarà caricato.",
+			"vertd_generic_title": "Errore di conversione video",
+			"vertd_generic_yes": "Invia video",
+			"vertd_generic_no": "Non inviare",
+			"vertd_failed_to_keep": "Impossibile mantenere il video sul server: {error}",
+			"unsupported_format": "Sono supportati solo file immagine, video, audio e documento",
+			"vertd_not_found": "Impossibile trovare l'istanza vertd per avviare la conversione video. Sei sicuro che l'URL dell'istanza sia impostato correttamente?",
+			"worker_downloading": "Il convertitore {type} è attualmente in fase di inizializzazione, attendi qualche istante.",
+			"worker_error": "Il convertitore {type} ha avuto un errore durante l'inizializzazione, riprova più tardi.",
+			"worker_timeout": "Il convertitore {type} sta impiegando più del previsto per inizializzare, attendi ancora qualche istante o aggiorna la pagina.",
+			"audio": "audio",
+			"doc": "documento",
+			"image": "immagine"
+		}
+	},
+	"settings": {
+		"title": "Impostazioni",
+		"errors": {
+			"save_failed": "Impossibile salvare le impostazioni!"
+		},
+		"appearance": {
+			"title": "Aspetto",
+			"brightness_theme": "Tema luminosità",
+			"brightness_description": "Vuoi un lampo di sole, o una tranquilla notte solitaria?",
+			"light": "Chiaro",
+			"dark": "Scuro",
+			"effect_settings": "Impostazioni effetti",
+			"effect_description": "Desideri effetti *fancy*, o un'esperienza più statica?",
+			"enable": "Abilita",
+			"disable": "Disabilita"
+		},
+		"conversion": {
+			"title": "Conversione",
+			"advanced_settings": "Impostazioni avanzate",
+			"filename_format": "Formato nome file",
+			"filename_description": "Questo determinerà il nome del file al momento del download, <b>esclusa l'estensione del file.</b> È possibile inserire i seguenti *template* nel formato, che verranno sostituiti con le informazioni pertinenti: <b>%name%</b> per il nome del file originale, <b>%extension%</b> per l'estensione del file originale e <b>%date%</b> per una *stringa* di data di quando il file è stato convertito.",
+			"placeholder": "VERT_%name%",
+			"default_format": "Formato di conversione predefinito",
+			"default_format_description": "Questo cambierà il formato predefinito selezionato quando carichi un file di questo tipo.",
+			"default_format_image": "Immagini",
+			"default_format_video": "Video",
+			"default_format_audio": "Audio",
+			"default_format_document": "Documenti",
+			"metadata": "Metadati del file",
+			"metadata_description": "Questo cambia se eventuali metadati (EXIF, informazioni sul brano, ecc.) del file originale vengono conservati nei file convertiti.",
+			"keep": "Mantieni",
+			"remove": "Rimuovi",
+			"quality": "Qualità di conversione",
+			"quality_description": "Questo cambia la qualità di output predefinita dei file convertiti (nella sua categoria). Valori più alti possono comportare tempi di conversione più lunghi e dimensioni maggiori.",
+			"quality_video": "Questo cambia la qualità di output predefinita dei file video convertiti. Valori più alti possono comportare tempi di conversione più lunghi e dimensioni maggiori.",
+			"quality_audio": "Audio (kbps)",
+			"quality_images": "Immagine (%)",
+			"rate": "Frequenza di campionamento (Hz)"
+		},
+		"vertd": {
+			"title": "Conversione video",
+			"status": "stato:",
+			"loading": "caricamento...",
+			"available": "disponibile, ID commit {commitId}",
+			"unavailable": "non disponibile (l'URL è corretto?)",
+			"description": "Il progetto <code>vertd</code> è un *server wrapper* per FFmpeg. Questo ti permette di convertire video attraverso la comodità dell'interfaccia web di VERT, pur essendo in grado di sfruttare la potenza della tua GPU per farlo il più rapidamente possibile.",
+			"hosting_info": "Ospitiamo un'istanza pubblica per la tua comodità, ma è abbastanza facile ospitarne una tua sul tuo PC o server se sai cosa stai facendo. Puoi scaricare i binari del server [vertd_link]qui[/vertd_link] - il processo di configurazione diventerà più semplice in futuro, quindi resta sintonizzato!",
+			"instance": "Istanza",
+			"url_placeholder": "Esempio: http://localhost:24153",
+			"conversion_speed": "Velocità di conversione",
+			"speed_description": "Questo descrive il compromesso tra velocità e qualità. Velocità maggiori si tradurranno in una qualità inferiore, ma completeranno il lavoro più velocemente.",
+			"speeds": {
+				"very_slow": "Molto Lento",
+				"slower": "Più Lento",
+				"slow": "Lento",
+				"medium": "Medio",
+				"fast": "Veloce",
+				"ultra_fast": "Ultra Veloce"
+			},
+			"auto_instance": "Automatico (consigliato)",
+			"eu_instance": "Falkenstein, Germania",
+			"us_instance": "Washington, USA",
+			"custom_instance": "Personalizzato"
+		},
+		"privacy": {
+			"title": "Privacy e dati",
+			"plausible_title": "Statistiche Plausible",
+			"plausible_description": "Utilizziamo [plausible_link]Plausible[/plausible_link], uno strumento di analisi focalizzato sulla privacy, per raccogliere statistiche completamente anonime. Tutti i dati sono anonimizzati e aggregati e nessuna informazione identificabile viene mai inviata o archiviata. Puoi visualizzare le statistiche [analytics_link]qui[/analytics_link] e scegliere di disattivare il tracciamento qui sotto.",
+			"opt_in": "Attiva tracciamento",
+			"opt_out": "Disattiva tracciamento",
+			"cache_title": "Gestione della cache",
+			"cache_description": "Memorizziamo i file del convertitore nella cache del tuo *browser* in modo che tu non debba riscaricarli ogni volta, migliorando le prestazioni e riducendo l'utilizzo dei dati.",
+			"refresh_cache": "Aggiorna cache",
+			"clear_cache": "Cancella cache",
+			"files_cached": "{size} ({count} file)",
+			"loading_cache": "Caricamento...",
+			"total_size": "Dimensione Totale",
+			"files_cached_label": "File in Cache",
+			"cache_cleared": "Cache cancellata con successo!",
+			"cache_clear_error": "Impossibile cancellare la cache."
+		},
+		"language": {
+			"title": "Lingua",
+			"description": "Seleziona la tua lingua preferita per l'interfaccia di VERT."
+		}
+	},
+	"about": {
+		"title": "Informazioni",
+		"why": {
+			"title": "Perché VERT?",
+			"description": "<b>I convertitori di file ci hanno sempre deluso.</b> Sono brutti, pieni di pubblicità e, soprattutto, lenti. Abbiamo deciso di risolvere questo problema una volta per tutte creando un'alternativa che risolve tutti questi problemi e non solo.<br/><br/>Tutti i file non video vengono convertiti completamente sul dispositivo; questo significa che non ci sono ritardi tra l'invio e la ricezione dei file da un server e non possiamo mai spiare i file che converti.<br/><br/>I file video vengono caricati sul nostro velocissimo server RTX 4000 Ada. I tuoi video rimangono lì per un'ora se non li converti. Se converti il file, il video rimarrà sul server per un'ora o fino a quando non viene scaricato. Il file verrà quindi eliminato dal nostro server."
+		},
+		"sponsors": {
+			"title": "Sponsor",
+			"description": "Vuoi sostenerci? Contatta uno sviluppatore nel server [discord_link]Discord[/discord_link] o invia un'e-mail a",
+			"email_copied": "E-mail copiata negli appunti!"
+		},
+		"resources": {
+			"title": "Risorse",
+			"discord": "Discord",
+			"source": "Sorgente",
+			"email": "E-mail"
+		},
+		"donate": {
+			"title": "Fai una donazione a VERT",
+			"description": "Con il tuo supporto, possiamo continuare a mantenere e migliorare VERT.",
+			"one_time": "Una tantum",
+			"monthly": "Mensile",
+			"custom": "Personalizzato",
+			"pay_now": "Paga ora",
+			"donate_amount": "Dona ${amount} USD",
+			"thank_you": "Grazie per la tua donazione!",
+			"payment_failed": "Pagamento fallito: {message}{period} Non ti è stato addebitato nulla.",
+			"donation_error": "Si è verificato un errore durante l'elaborazione della tua donazione. Riprova più tardi.",
+			"payment_error": "Errore nel recupero dei dettagli di pagamento. Riprova più tardi."
+		},
+		"credits": {
+			"title": "Crediti",
+			"contact_team": "Se desideri contattare il team di sviluppo, utilizza l'e-mail che trovi sulla scheda \"Risorse\".",
+			"notable_contributors": "Contributori di rilievo",
+			"notable_description": "Vorremmo ringraziare queste persone per i loro importanti contributi a VERT.",
+			"github_contributors": "Contributori GitHub",
+			"github_description": "Un grande grazie a tutte queste persone per aver dato una mano! [github_link]Vuoi aiutare anche tu?[/github_link]",
+			"no_contributors": "Sembra che nessuno abbia ancora contribuito... [contribute_link]sii il primo a contribuire![/contribute_link]",
+			"libraries": "Librerie",
+			"libraries_description": "Un grande ringraziamento a FFmpeg (audio, video), ImageMagick (immagini) e Pandoc (documenti) per aver mantenuto librerie così eccellenti per così tanti anni. VERT si affida a loro per fornirti le tue conversioni.",
+			"roles": {
+				"lead_developer": "Sviluppatore principale; backend di conversione, implementazione UI",
+				"developer": "Sviluppatore; implementazione UI",
+				"designer": "Designer; UX, branding, marketing",
+				"docker_ci": "Manutenzione del supporto Docker e CI",
+				"former_cofounder": "Ex co-fondatore e designer"
+			}
+		},
+		"errors": {
+			"github_contributors": "Errore nel recupero dei contributori GitHub"
+		}
+	},
+	"workers": {
+		"errors": {
+			"general": "Errore durante la conversione di {file}: {message}",
+			"cancel": "Errore durante l'annullamento della conversione per {file}: {message}",
+			"magick": "Errore nel *worker* Magick, la conversione delle immagini potrebbe non funzionare come previsto.",
+			"ffmpeg": "Errore durante il caricamento di ffmpeg, alcune funzionalità potrebbero non funzionare.",
+			"no_audio": "Nessuno *stream* audio trovato.",
+			"invalid_rate": "Frequenza di campionamento specificata non valida: {rate}Hz"
+		}
+	}
+}

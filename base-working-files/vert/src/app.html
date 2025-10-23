@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="%lang%">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<link rel="apple-touch-icon" href="%sveltekit.assets%/favicon.png" />
+
+		<link
+			rel="apple-touch-startup-image"
+			href="%sveltekit.assets%/lettermark.jpg"
+		/>
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+
+		%sveltekit.head%
+		<script>
+			(function () {
+				// Apply theme before DOM is loaded
+				let theme = localStorage.getItem("theme");
+				const prefersDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				console.log(
+					`Theme: ${theme || "N/A"}, prefers dark: ${prefersDark}`,
+				);
+
+				if (theme !== "light" && theme !== "dark") {
+					console.log("Invalid theme, setting to default");
+					theme = prefersDark ? "dark" : "light";
+					localStorage.setItem("theme", theme);
+				}
+
+				console.log(`Applying theme: ${theme}`);
+				document.documentElement.classList.add(theme);
+
+				// Lock dark reader if it's set to dark mode
+				if (theme === "dark") {
+					const lock = document.createElement("meta");
+					lock.name = "darkreader-lock";
+					document.head.appendChild(lock);
+				}
+			})();
+		</script>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
