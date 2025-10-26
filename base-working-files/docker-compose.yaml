@@ -1689,7 +1689,7 @@ services:
     container_name: homeassistant
     image: ghcr.io/home-assistant/home-assistant:stable
     volumes:
-      - ./homeassistant:/config
+      - ${FOLDER_FOR_DATA:?err}/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
     depends_on:
@@ -1705,11 +1705,22 @@ services:
     container_name: mosquitto
     image: eclipse-mosquitto
     volumes:
-      - ./mosquitto:/mosquitto/
+      - ${FOLDER_FOR_DATA:?err}/mosquitto:/mosquitto/
     environment:
       - TZ=Europe/London
     ports:
       - 1883:1883
+    restart: unless-stopped
+
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=86400
     restart: unless-stopped
 
   # zigbee2mqtt:
