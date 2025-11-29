@@ -116,7 +116,7 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - 5380:80
+      - 80:80
       - 3000:3000
     volumes:
       - ${FOLDER_FOR_DATA:?err}/adguard/conf:/opt/adguardhome/conf
@@ -402,7 +402,8 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   vert:
-    image: ghcr.io/vert-sh/vert:latest
+    build:
+      context: ./vert
     container_name: vert
     restart: unless-stopped
     networks:
@@ -413,7 +414,8 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
 
   vertd:
-    image: ghcr.io/vert-sh/vertd:latest
+    build:
+      context: ./vertd
     container_name: vertd
     restart: unless-stopped
     networks:
@@ -422,7 +424,6 @@ services:
       - 24153:24153
     environment:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-}
-    runtime: nvidia
     deploy:
       resources:
         reservations:
