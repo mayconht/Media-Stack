@@ -10,6 +10,24 @@ networks:
 
 services:
 
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - 80:80
+      - 443:443
+      - 81:81
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/nginx-proxy-manager/data:/data
+      - ${FOLDER_FOR_DATA:?err}/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    environment:
+      - TZ=${TIMEZONE:?err}
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -116,7 +134,7 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - 80:80
+      - 5380:80
       - 3000:3000
     volumes:
       - ${FOLDER_FOR_DATA:?err}/adguard/conf:/opt/adguardhome/conf
@@ -131,25 +149,37 @@ services:
     networks:
       - mediastack
     volumes:
-      - ${FOLDER_FOR_DATA:?err}/postgresql:/var/lib/postgresql/data
-    env_file:
-      - ./.env
+      - ${FOLDER_FOR_DATA:?err}/tandoor/postgresql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=tandoor
+      - POSTGRES_USER=tandoor
+      - POSTGRES_PASSWORD=tandoor
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  web_recipes:
+  tandoor:
     image: vabene1111/recipes
-    container_name: web_recipes
+    container_name: tandoor
     restart: always
     networks:
       - mediastack
     ports:
-      - ${WEBUI_PORT_RECIPES:?err}:8080
+      - 8085:8080
     volumes:
-      - ${FOLDER_FOR_DATA:?err}/web_recipes/staticfiles:/opt/recipes/staticfiles
-      - ${FOLDER_FOR_DATA:?err}/web_recipes/mediafiles:/opt/recipes/mediafiles
-    env_file:
-      - ./.env
+      - ${FOLDER_FOR_DATA:?err}/tandoor/staticfiles:/opt/recipes/staticfiles
+      - ${FOLDER_FOR_DATA:?err}/tandoor/mediafiles:/opt/recipes/mediafiles
+    environment:
+      - DEBUG=0
+      - ALLOWED_HOSTS=*
+      - SECRET_KEY=${SECRET_KEY:?err}
+      - DB_ENGINE=django.db.backends.postgresql
+      - POSTGRES_HOST=db_recipes
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=tandoor
+      - POSTGRES_PASSWORD=tandoor
+      - POSTGRES_DB=tandoor
+      - GUNICORN_MEDIA=1
+      - TZ=${TIMEZONE:?err}
     depends_on:
       - db_recipes
     labels:
@@ -301,8 +331,8 @@ services:
     networks:
       - mediastack
     ports:
-      - 8266:8266
       - 8265:8265
+      - 8266:8266
     volumes:
       - ${FOLDER_FOR_MEDIA:?err}/media:/data
       - ${FOLDER_FOR_DATA:?err}/tdarr/server:/app/server
@@ -446,3 +476,38 @@ services:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_POLL_INTERVAL=86400
       - WATCHTOWER_LABEL_ENABLE=true
+
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:latest
+    container_name: homarr
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - 7575:7575
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/homarr/configs:/appdata/configs
+      - ${FOLDER_FOR_DATA:?err}/homarr/data:/appdata/data
+      - ${FOLDER_FOR_DATA:?err}/homarr/icons:/appdata/icons
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - SECRET_ENCRYPTION_KEY=${HOMARR_SECRET_KEY:?err}
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    networks:
+      - mediastack
+    ports:
+      - 5678:5678
+    volumes:
+      - ${FOLDER_FOR_DATA:?err}/n8n:/home/node/.n8n
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - GENERIC_TIMEZONE=${TIMEZONE:?err}
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
